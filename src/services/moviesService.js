@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toMovie } from '../parsers/index'
 
 const baseUrl = 'https://api.themoviedb.org/3/movie'
 const api_key = process.env.REACT_APP_API_KEY
@@ -15,8 +16,8 @@ const getAll = async () => {
   for (let i = 1; i <= nPages; i++) {
     promisesArray.push(axios.get(`${baseUrl}/top_rated`, { params: { api_key, page: i } }))
   }
-  let responses = await axios.all(promisesArray)
-  const idArray = responses.map(response => (
+  let responsesArray = await axios.all(promisesArray)
+  const idArray = responsesArray.map(response => (
     response.data.results.map(result => (
       result.id
     ))
@@ -24,10 +25,10 @@ const getAll = async () => {
 
   // use movie ids to get detailed data...
   promisesArray = idArray.map(id => axios.get(`${baseUrl}/${id}`, { params: { api_key } }))
-  responses = await axios.all(promisesArray)
+  responsesArray = await axios.all(promisesArray)
 
-  const movieArray = responses.map(response => response.data).flat()
-  return movieArray
+  const movieObjArray = responsesArray.map(response => response.data).flat()
+  return movieObjArray.map(movieObj => toMovie(movieObj))
 }
 
 const moviesService = {
