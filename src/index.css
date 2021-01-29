@@ -1,0 +1,18 @@
+:root {
+  --sm: 640px;
+	--md: 768px;
+	--lg: 1024px;
+  --xl: 1280px;
+  
+  --primary: #9353B3;
+  --secondary: #3F4655;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Quicksand', 'Roboto', sans-serif;
+}

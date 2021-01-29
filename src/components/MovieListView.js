@@ -13,11 +13,9 @@ const MovieListView = () => {
     awaitMovieData()
   }, [])
 
-  console.log(moviesList)
-
   return (
     <div>
-
+      <MovieCard />
     </div>
   )
 }

@@ -1,10 +1,12 @@
 import React from 'react'
+import logo from '../assets/images/logo.png'
 
 const Header = () => {
   return (
     <header>
-      <h1>Marvin's Movies</h1>
-      <h2>Header</h2>
+      <nav>
+        <img src={logo} alt="" />
+      </nav>
     </header>
   )
 }

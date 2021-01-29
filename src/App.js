@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { MovieListView, Header, Footer } from './components';
-import { moviesService } from './services'
 
 const App = () => {
   return (
