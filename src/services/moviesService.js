@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { toMovie } from '../parsers/index'
+import { toMovie } from '../parsers'
 
 const baseUrl = 'https://api.themoviedb.org/3/movie'
 const api_key = process.env.REACT_APP_API_KEY
