@@ -11,11 +11,10 @@
   --leaf-green: rgb(67,183,42);
 }
 
-html {
-  /* font-size: 62.5%; */
+.navbar-root {
+  font-size: 1.2rem;
 }
 
-body {
-  font-size: 1.6rem;
-  font-family: 'Quicksand', 'Roboto', sans-serif;
+#hero-img {
+  width: 100%;
 }
