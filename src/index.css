@@ -11,10 +11,47 @@
   --leaf-green: rgb(67,183,42);
 }
 
-.navbar-root {
+hr {
+  background-color: white;
+}
+
+.Header-navbar {
   font-size: 1.2rem;
 }
 
-#hero-img {
+.Header-hero-img {
   width: 100%;
+}
+
+.MovieListView-root {
+  min-height: 200px;
+  background-color: var(--bg-gray);
+}
+
+.Footer-root {
+  color: white;
+  background-color: var(--blue-gray);
+}
+
+.Footer-flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5% 15%;
+}
+
+.Footer-flex-item {
+  flex: 1 1;
+  margin: 0 1.6rem 0 1.6rem;
+}
+
+.Footer-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1% 15%;
+}
+
+.Footer-links-item a {
+  margin: 0 1.6rem 0 1.6rem;
 }

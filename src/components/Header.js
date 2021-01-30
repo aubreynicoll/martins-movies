@@ -10,8 +10,8 @@ import Button from 'react-bootstrap/Button'
 
 const Header = () => {
   return (
-    <header>
-      <Navbar className="navbar-root" expand="lg">
+    <header className="Header-root">
+      <Navbar className="Header-navbar" expand="lg">
         <Navbar.Brand href="#"><img src={logo} alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -32,8 +32,8 @@ const Header = () => {
           </Form>
         </Navbar.Collapse>   
       </Navbar>
-      <div id="hero-root">
-        <img id="hero-img" src={hero} alt="" />
+      <div className="Header-hero">
+        <img className="Header-hero-img" src={hero} alt="" />
       </div>
     </header>
   )
