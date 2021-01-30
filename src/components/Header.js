@@ -1,12 +1,13 @@
 import React from 'react'
 import logo from '../assets/images/logo.png'
+import Navbar from 'react-bootstrap/Navbar'
 
 const Header = () => {
   return (
     <header>
-      <nav>
-        <img src={logo} alt="" />
-      </nav>
+      <Navbar>
+        
+      </Navbar>
     </header>
   )
 }
