@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/images/logo.png'
-import hero from '../assets/images/hero.png'
+import hero from '../assets/images/hero2.png'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'

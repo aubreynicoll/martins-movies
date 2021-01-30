@@ -14,7 +14,7 @@ const MovieListView = () => {
   }, [])
 
   return (
-    <div>
+    <div className="MovieListView-root">
       <MovieCard />
     </div>
   )
