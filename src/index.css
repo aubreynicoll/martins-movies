@@ -4,15 +4,17 @@
 	--lg: 1024px;
   --xl: 1280px;
   
-  --primary: #9353B3;
-  --secondary: #3F4655;
+  --violet: rgb(147,82,179);
+  --blue-gray: rgb(62,69,85);
+  --bg-gray: rgb(240,242,245);
+  --royal-blue: rgb(26,118,241);
+  --leaf-green: rgb(67,183,42);
 }
 
-html {
-  font-size: 62.5%;
+.navbar-root {
+  font-size: 1.2rem;
 }
 
-body {
-  font-size: 1.6rem;
-  font-family: 'Quicksand', 'Roboto', sans-serif;
+#hero-img {
+  width: 100%;
 }
