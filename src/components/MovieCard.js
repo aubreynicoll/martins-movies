@@ -22,6 +22,7 @@ const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
             {movie.releaseYear}
           </span>
         </div>
+        
         <div className="MovieCard-flex-row">
           <span>
             <img src={starIcon} alt="" width="16" />

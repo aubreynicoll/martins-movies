@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/images/logo.png'
 import hero from '../assets/images/hero2.png'
 import Navbar from 'react-bootstrap/Navbar'
@@ -6,9 +6,11 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
+import { useHoverDropdown } from '../hooks';
 
 const Header = ({ searchQuery, handleSearchFieldChange }) => {
+  const hoverDropdown = useHoverDropdown()
+
   return (
     <header className="Header-root">
       <Navbar className="Header-navbar" expand="lg">
@@ -18,7 +20,7 @@ const Header = ({ searchQuery, handleSearchFieldChange }) => {
           <Nav className="mx-auto">
             <Nav.Link href="#">Your</Nav.Link>
             <Nav.Link href="#">Links</Nav.Link>
-            <NavDropdown title="Here" id="basic-nav-dropdown">
+            <NavDropdown title="Here" id="basic-nav-dropdown" {...hoverDropdown}>
               <NavDropdown.Item href="#">Link 1</NavDropdown.Item>
               <NavDropdown.Item href="#">Link 2</NavDropdown.Item>
               <NavDropdown.Item href="#">Link 3</NavDropdown.Item>

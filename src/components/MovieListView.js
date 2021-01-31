@@ -53,7 +53,7 @@ const MovieListView = ({ searchQuery }) => {
         || movie.genres.some(genre => genre.toLowerCase().includes(searchQuery.toLowerCase()))
         || movie.language.toLowerCase().includes(searchQuery.toLowerCase())
         || movie.releaseYear.includes(searchQuery)
-    ))
+      ))
     : moviesList
 
   return (
