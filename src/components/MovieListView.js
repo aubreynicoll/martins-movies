@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { MovieCard } from '.'
 import { moviesService } from '../services'
+import { localStorageWithTTL } from '../utils'
 
 const MovieListView = () => {
   const [moviesList, setMoviesList] = useState([])
@@ -9,8 +10,18 @@ const MovieListView = () => {
     const awaitMovieData = async () => {
       const movieData = await moviesService.getAll()
       setMoviesList(movieData)
+
+      const HoursToLive = 1
+      localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
     }
-    awaitMovieData()
+
+    const cachedMovieData = localStorageWithTTL.getItem('moviesList')
+
+    if (cachedMovieData) {
+      setMoviesList(cachedMovieData)
+    } else {
+      awaitMovieData()
+    }    
   }, [])
 
   return (
