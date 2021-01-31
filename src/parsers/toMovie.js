@@ -1,4 +1,6 @@
 const toMovie = (object) => {
+  const languageName = new Intl.DisplayNames(['en'], { type: 'language', fallback: 'none' })
+  
   return {
     id: object.id,
     title: object.title,
@@ -8,7 +10,7 @@ const toMovie = (object) => {
     imdbId: object.imdb_id,
     image: object.poster_path,
     releaseYear: object.release_date.substring(0, 4),
-    languages: object.spoken_languages.map(language => language.name),
+    language: languageName.of(object.original_language) ?? 'Unknown'
   }
 }
 
