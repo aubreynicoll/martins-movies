@@ -5,16 +5,72 @@
   --xl: 1280px;
   
   --violet: rgb(147,82,179);
+  --light-violet: rgb(166,93,202);
   --blue-gray: rgb(62,69,85);
   --bg-gray: rgb(240,242,245);
   --royal-blue: rgb(26,118,241);
   --leaf-green: rgb(67,183,42);
 }
 
-.navbar-root {
+h3 {
+  margin: 20px 0;
+}
+
+hr {
+  background-color: white;
+}
+
+.Header-navbar {
   font-size: 1.2rem;
 }
 
-#hero-img {
+.Header-navbar-logo {
+  width: 50%;
+}
+
+.Header-hero-img {
   width: 100%;
+}
+
+.MovieListView-root {
+  min-height: 50vh;
+  background-color: var(--bg-gray);
+}
+
+.Footer-root {
+  color: white;
+  background-color: var(--blue-gray);
+}
+
+.Footer-root a {
+  color: white;
+  transition: color 0.25s;
+}
+
+.Footer-root a:hover {
+  text-decoration: none;
+  color: var(--light-violet);
+}
+
+.Footer-flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5% 15%;
+}
+
+.Footer-flex-item {
+  flex: 1 1;
+  margin: 0 10px;
+}
+
+.Footer-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1% 15%;
+}
+
+.Footer-links-item a {
+  margin: 0 10px;
 }

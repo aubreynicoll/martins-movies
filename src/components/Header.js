@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/images/logo.png'
-import hero from '../assets/images/hero.png'
+import hero from '../assets/images/hero2.png'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
@@ -10,9 +10,9 @@ import Button from 'react-bootstrap/Button'
 
 const Header = () => {
   return (
-    <header>
-      <Navbar className="navbar-root" expand="lg">
-        <Navbar.Brand href="#"><img src={logo} alt="" /></Navbar.Brand>
+    <header className="Header-root">
+      <Navbar className="Header-navbar" expand="lg">
+        <Navbar.Brand href="#"><img className="Header-navbar-logo" src={logo} alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
@@ -32,8 +32,9 @@ const Header = () => {
           </Form>
         </Navbar.Collapse>   
       </Navbar>
-      <div id="hero-root">
-        <img id="hero-img" src={hero} alt="" />
+      
+      <div className="Header-hero">
+        <img className="Header-hero-img" src={hero} alt="" />
       </div>
     </header>
   )
