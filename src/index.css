@@ -33,8 +33,36 @@ hr {
 }
 
 .MovieListView-root {
-  min-height: 50vh;
   background-color: var(--bg-gray);
+  padding: 100px 0;
+}
+
+.MovieListView-container {
+  max-width: var(--xl);
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(413px, 1fr));
+  row-gap: 25px;
+}
+
+.MovieListView-item {
+  content: '';
+}
+
+.MovieCard-root {
+  width: 400px;
+  height: 600px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 4px 4px 24px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.MovieCard-root:hover {
+  transform: translateY(-15px);
 }
 
 .Footer-root {
