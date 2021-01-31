@@ -3,7 +3,7 @@ import { MovieCard } from '.'
 import { moviesService } from '../services'
 import { localStorageWithTTL } from '../utils'
 
-const MovieListView = () => {
+const MovieListView = ({ searchQuery }) => {
   const [moviesList, setMoviesList] = useState([])
   const [watchedMoviesList, setWatchedMoviesList] = useState([])
 
@@ -45,12 +45,21 @@ const MovieListView = () => {
   useEffect(() => {
     localStorage.setItem('watchedMoviesList', JSON.stringify(watchedMoviesList))
   }, [watchedMoviesList])
-  console.log(watchedMoviesList)
+
+  // filter movies by searchQuery...
+  const moviesBySearch = searchQuery
+    ? moviesList.filter(movie => (
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+        || movie.genres.some(genre => genre.toLowerCase().includes(searchQuery.toLowerCase()))
+        || movie.language.toLowerCase().includes(searchQuery.toLowerCase())
+        || movie.releaseYear.includes(searchQuery)
+    ))
+    : moviesList
 
   return (
     <div className="MovieListView-root">
       <div className="MovieListView-container">
-        {moviesList.map(movie => (          
+        {moviesBySearch.map(movie => (          
           <MovieCard 
             key={movie.id} 
             movie={movie}

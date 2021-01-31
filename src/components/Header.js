@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 
-const Header = () => {
+const Header = ({ searchQuery, handleSearchFieldChange }) => {
   return (
     <header className="Header-root">
       <Navbar className="Header-navbar" expand="lg">
@@ -27,8 +27,13 @@ const Header = () => {
             </NavDropdown>
           </Nav>     
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+            <FormControl 
+              onChange={({target}) => handleSearchFieldChange(target.value)} 
+              value={searchQuery} 
+              type="text" 
+              placeholder="Search" 
+              className="mr-sm-2" 
+            />
           </Form>
         </Navbar.Collapse>   
       </Navbar>
