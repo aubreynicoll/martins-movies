@@ -5,7 +5,9 @@ import { localStorageWithTTL } from '../utils'
 
 const MovieListView = () => {
   const [moviesList, setMoviesList] = useState([])
+  const [watchedMoviesList, setWatchedMoviesList] = useState([])
 
+  // initialize state...
   useEffect(() => {
     const awaitMovieData = async () => {
       const movieData = await moviesService.getAll()
@@ -15,21 +17,47 @@ const MovieListView = () => {
       localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
     }
 
+    // initialize moviesList from localStorage...
     const cachedMovieData = localStorageWithTTL.getItem('moviesList')
-
     if (cachedMovieData) {
       setMoviesList(cachedMovieData)
     } else {
       awaitMovieData()
-    }    
+    }
+
+    // initialize watchedMoviesList from localStorage...
+    const cachedWatchedMoviesList = JSON.parse(localStorage.getItem('watchedMoviesList'))
+    if (cachedWatchedMoviesList) {
+      setWatchedMoviesList(cachedWatchedMoviesList)
+    }
   }, [])
 
+  // add or remove movie id...
+  const handleWatchedButtonClick = (movie) => {
+    if (watchedMoviesList.includes(movie.id)) {
+      setWatchedMoviesList(watchedMoviesList.filter(id => id !== movie.id))
+    } else {
+      setWatchedMoviesList([...watchedMoviesList, movie.id])
+    }
+  }
+
+  // then save watchedMoviesList to localStorage...
+  useEffect(() => {
+    localStorage.setItem('watchedMoviesList', JSON.stringify(watchedMoviesList))
+  }, [watchedMoviesList])
+  console.log(watchedMoviesList)
 
   return (
     <div className="MovieListView-root">
       <div className="MovieListView-container">
-        {moviesList.map(movie => (
-          <MovieCard className="MovieListView-item" />
+        {moviesList.map(movie => (          
+          <MovieCard 
+            key={movie.id} 
+            movie={movie}
+            isWatched={watchedMoviesList.includes(movie.id)}
+            handleWatchedButtonClick={() => handleWatchedButtonClick(movie)}
+            className="MovieListView-item" 
+          />
         ))}
       </div>
     </div>
