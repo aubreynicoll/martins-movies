@@ -8,8 +8,6 @@ const App = () => {
     setSearchQuery(value)
   }
 
-  console.log(searchQuery)
-
   return (
     <div>
       <Header searchQuery={searchQuery} handleSearchFieldChange={handleSearchFieldChange} />

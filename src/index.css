@@ -43,12 +43,8 @@ hr {
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(413px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(413px, 1fr));
   row-gap: 25px;
-}
-
-.MovieListView-item {
-  content: '';
 }
 
 .MovieCard-root {
@@ -87,8 +83,9 @@ hr {
   justify-content: space-between;
 }
 
-.MovieCard-details-container > * {
-  content: '';
+.MovieCard-details-container h3 {
+  color: var(--blue-gray);
+  margin: 0 0;  
 }
 
 .MovieCard-flex-row {
@@ -96,13 +93,9 @@ hr {
   justify-content: space-between;
 }
 
-.MovieCard-flex-row span {
+.MovieCard-flex-row > * {
   display: flex;
   align-items: center;
-}
-
-.MovieCard-details-container h3 {
-  color: var(--blue-gray);
 }
 
 .MovieCard-overview {
