@@ -6,18 +6,10 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
+import { useHoverDropdown } from '../hooks';
 
 const Header = ({ searchQuery, handleSearchFieldChange }) => {
-  const [show, setShow] = useState(false)
-
-  const showDropdown = (event) => {
-    setShow(true)
-  }
-
-  const hideDropdown = (event) => {
-    setShow(false)
-  }
+  const hoverDropdown = useHoverDropdown()
 
   return (
     <header className="Header-root">
@@ -28,9 +20,7 @@ const Header = ({ searchQuery, handleSearchFieldChange }) => {
           <Nav className="mx-auto">
             <Nav.Link href="#">Your</Nav.Link>
             <Nav.Link href="#">Links</Nav.Link>
-            <NavDropdown title="Here" id="basic-nav-dropdown"
-              show={show} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}
-            >
+            <NavDropdown title="Here" id="basic-nav-dropdown" {...hoverDropdown}>
               <NavDropdown.Item href="#">Link 1</NavDropdown.Item>
               <NavDropdown.Item href="#">Link 2</NavDropdown.Item>
               <NavDropdown.Item href="#">Link 3</NavDropdown.Item>
