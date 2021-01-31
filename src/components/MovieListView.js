@@ -17,7 +17,7 @@ const MovieListView = ({ searchQuery }) => {
       localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
     }
 
-    // initialize moviesList from localStorage...
+    // initialize moviesList from localStorage, else from server...
     const cachedMovieData = localStorageWithTTL.getItem('moviesList')
     if (cachedMovieData) {
       setMoviesList(cachedMovieData)
@@ -32,7 +32,7 @@ const MovieListView = ({ searchQuery }) => {
     }
   }, [])
 
-  // add or remove movie id...
+  // add or remove movie id from array...
   const handleWatchedButtonClick = (movie) => {
     if (watchedMoviesList.includes(movie.id)) {
       setWatchedMoviesList(watchedMoviesList.filter(id => id !== movie.id))

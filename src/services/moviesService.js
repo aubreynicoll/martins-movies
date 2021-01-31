@@ -28,7 +28,7 @@ const getAll = async () => {
   responsesArray = await axios.all(promisesArray)
 
   const movieObjArray = responsesArray.map(response => response.data).flat()
-  return movieObjArray.map(movieObj => toMovie(movieObj))
+  return movieObjArray.map(movieObj => toMovie(movieObj)) // return formatted data
 }
 
 const moviesService = {

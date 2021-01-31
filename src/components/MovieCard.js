@@ -18,11 +18,11 @@ const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
       </div>
 
       {trailerLink
-        && <a href={trailerLink} target="_blank" rel="noopener noreferrer">
-          <div className="MovieCard-play-button">
-            <img src={playIcon} alt="" />
-          </div>
-        </a>
+        &&  <a href={trailerLink} target="_blank" rel="noopener noreferrer">
+              <div className="MovieCard-play-button">
+                <img src={playIcon} alt="" />
+              </div>
+            </a>
       }
 
       <div className="MovieCard-details-container">
@@ -41,7 +41,9 @@ const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
             {movie.voteAverage}/10
           </span>
           {' '}
-          <span>{movie.genres.slice(0,3).join(', ')}</span>
+          <span>
+            {movie.genres.slice(0,3).join(', ')}
+          </span>
         </div>
 
         <p className="MovieCard-overview">
@@ -59,7 +61,10 @@ const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
               variant={isWatched ? 'success' : 'secondary'}
               onClick={handleWatchedButtonClick}
             >
-              {isWatched ? <><img src={checkIcon} alt="" width="18" /> Watched</> : 'Watched'}
+              {isWatched 
+                ? <><img src={checkIcon} alt="" width="18" /> Watched</> 
+                : 'Watched'
+              }
             </Button>
           </span>
         </div>
