@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header className="Header-root">
       <Navbar className="Header-navbar" expand="lg">
-        <Navbar.Brand href="#"><img src={logo} alt="" /></Navbar.Brand>
+        <Navbar.Brand href="#"><img className="Header-navbar-logo" src={logo} alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
@@ -32,6 +32,7 @@ const Header = () => {
           </Form>
         </Navbar.Collapse>   
       </Navbar>
+      
       <div className="Header-hero">
         <img className="Header-hero-img" src={hero} alt="" />
       </div>
