@@ -10,7 +10,8 @@ const toMovie = (object) => {
     imdbId: object.imdb_id,
     image: object.poster_path,
     releaseYear: object.release_date.substring(0, 4),
-    language: languageName.of(object.original_language) ?? 'Unknown'
+    language: languageName.of(object.original_language) ?? 'Unknown',
+    video: object.videos.results.filter(r => r.type === 'Trailer')[0]
   }
 }
 
