@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MovieListView, Header, Footer } from './components';
 
 const App = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const handleSearchFieldChange = (value) => {
+    setSearchQuery(value)
+  }
+
+  console.log(searchQuery)
+
   return (
     <div>
-      <Header />
+      <Header searchQuery={searchQuery} handleSearchFieldChange={handleSearchFieldChange} />
       <main>
-        <MovieListView />
+        <MovieListView searchQuery={searchQuery} />
       </main>
       <Footer />
     </div>
