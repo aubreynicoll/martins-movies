@@ -10,7 +10,9 @@ const MovieListView = () => {
     const awaitMovieData = async () => {
       const movieData = await moviesService.getAll()
       setMoviesList(movieData)
-      localStorageWithTTL.setItem('moviesList', movieData, 1)
+
+      const HoursToLive = 1
+      localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
     }
 
     const cachedMovieData = localStorageWithTTL.getItem('moviesList')
