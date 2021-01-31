@@ -24,9 +24,14 @@ const MovieListView = () => {
     }    
   }, [])
 
+
   return (
     <div className="MovieListView-root">
-      <MovieCard />
+      <div className="MovieListView-container">
+        {moviesList.map(movie => (
+          <MovieCard className="MovieListView-item" />
+        ))}
+      </div>
     </div>
   )
 }
