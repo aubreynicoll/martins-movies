@@ -8,7 +8,7 @@ const getAll = async () => {
   // for fun, we pull a random number of movies from the top_rated endpoint...
   const maxMovies = 8310
   const moviesPerPage = 20
-  const nMovies = 8310 // Math.floor(Math.random() * maxMovies)
+  const nMovies = Math.floor(Math.random() * maxMovies)
   const nPages = Math.ceil(nMovies / moviesPerPage)
 
   // get array of top_rated movie ids...
