@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { MovieCard } from '.'
+import { MovieCard, Pagination } from '.'
 import { moviesService } from '../services'
 import { localStorageWithTTL } from '../utils'
-import Pagination from 'jw-react-pagination'
 
 const MovieListView = ({ searchQuery }) => {
   const [moviesList, setMoviesList] = useState([])
@@ -63,7 +62,6 @@ const MovieListView = ({ searchQuery }) => {
     setPageOfMovies(pageOfItems)
   }
 
-  // scroll to top of window when page is changed
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pageOfMovies])
