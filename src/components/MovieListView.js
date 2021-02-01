@@ -41,7 +41,7 @@ const MovieListView = ({ searchQuery }) => {
     }
   }
 
-  // then save watchedMoviesList to localStorage...
+  // save watchedMoviesList to localStorage...
   useEffect(() => {
     localStorage.setItem('watchedMoviesList', JSON.stringify(watchedMoviesList))
   }, [watchedMoviesList])
