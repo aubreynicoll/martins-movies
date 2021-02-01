@@ -14,7 +14,7 @@ const MovieListView = ({ searchQuery }) => {
       const movieData = await moviesService.getAll()
       setMoviesList(movieData)
 
-      const HoursToLive = 1
+      const HoursToLive = 0
       localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
     }
 
@@ -80,7 +80,7 @@ const MovieListView = ({ searchQuery }) => {
         ))}
       </div>
       <div className="MovieListView-pagination-container">
-        <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} searchQuery={searchQuery} />
+        <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} searchQuery={searchQuery} moviesList={moviesList} />
       </div>
     </div>
   )

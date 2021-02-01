@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Pagination from 'react-bootstrap/Pagination'
 
-const MyPagination = ({ items, onChangePage, searchQuery, pageSize = 6}) => {
+const MyPagination = ({ items, onChangePage, searchQuery, moviesList, pageSize = 6}) => {
   const minPage = 1
   const maxPage = Math.ceil(items.length / pageSize)
 
@@ -22,7 +22,7 @@ const MyPagination = ({ items, onChangePage, searchQuery, pageSize = 6}) => {
     onChangePage(
       items.slice(pageStartElement, pageEndElement)
     )
-  }, [active, searchQuery])
+  }, [active, searchQuery, moviesList])
 
   let pages = []
   for (let i = Math.max(active - 3, minPage); i <= Math.min(active + 4, maxPage); i++) {
