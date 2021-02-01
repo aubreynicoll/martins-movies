@@ -5,11 +5,7 @@ const MyPagination = ({ items, onChangePage, searchQuery, moviesList, pageSize =
   const minPage = 1
   const maxPage = Math.ceil(items.length / pageSize)
 
-  const [active, setActive] = useState()
-  
-  useEffect(() => {
-    setActive(1)
-  }, [])
+  const [active, setActive] = useState(1)
 
   useEffect(() => {
     setActive(1)
