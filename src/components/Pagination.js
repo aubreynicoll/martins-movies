@@ -12,6 +12,10 @@ const MyPagination = ({ items, onChangePage, searchQuery, pageSize = 6}) => {
   }, [])
 
   useEffect(() => {
+    setActive(1)
+  }, [searchQuery])
+
+  useEffect(() => {
     const pageStartElement = (active - 1) * pageSize
     const pageEndElement = Math.min(pageStartElement + pageSize, items.length)
 
