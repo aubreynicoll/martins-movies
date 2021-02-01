@@ -58,9 +58,15 @@ const MovieListView = ({ searchQuery }) => {
       ))
     : moviesList
 
-  const onChangePage = (pageOfMovies) => {
-    setPageOfMovies(pageOfMovies)
+  // update pageOfMovies when page is changed
+  const onChangePage = (pageOfItems) => {
+    setPageOfMovies(pageOfItems)
   }
+
+  // scroll to top of window when page is changed
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pageOfMovies])
 
   return (
     <div className="MovieListView-root">
@@ -75,7 +81,9 @@ const MovieListView = ({ searchQuery }) => {
           />
         ))}
       </div>
-      <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} />
+      <div className="MovieListView-pagination-container">
+        <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} />
+      </div>
     </div>
   )
 }
