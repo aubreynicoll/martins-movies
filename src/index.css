@@ -47,6 +47,22 @@ hr {
   row-gap: 25px;
 }
 
+.MovieListView-pagination-container {
+  margin: 100px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination a, .pagination a:hover {
+  color: var(--violet);
+}
+
+.pagination  {
+  background-color: var(--violet);
+  color: white;
+}
+
 .MovieCard-root {
   position: relative;
   width: 400px;

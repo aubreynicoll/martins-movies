@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { MovieCard } from '.'
+import { MovieCard, Pagination } from '.'
 import { moviesService } from '../services'
 import { localStorageWithTTL } from '../utils'
 
 const MovieListView = ({ searchQuery }) => {
   const [moviesList, setMoviesList] = useState([])
+  const [pageOfMovies, setPageOfMovies] = useState([])
   const [watchedMoviesList, setWatchedMoviesList] = useState([])
 
   // initialize state...
@@ -41,7 +42,7 @@ const MovieListView = ({ searchQuery }) => {
     }
   }
 
-  // then save watchedMoviesList to localStorage...
+  // save watchedMoviesList to localStorage...
   useEffect(() => {
     localStorage.setItem('watchedMoviesList', JSON.stringify(watchedMoviesList))
   }, [watchedMoviesList])
@@ -56,10 +57,19 @@ const MovieListView = ({ searchQuery }) => {
       ))
     : moviesList
 
+  // update pageOfMovies when page is changed
+  const onChangePage = (pageOfItems) => {
+    setPageOfMovies(pageOfItems)
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pageOfMovies])
+
   return (
     <div className="MovieListView-root">
       <div className="MovieListView-container">
-        {moviesBySearch.map(movie => (          
+        {pageOfMovies.map(movie => (          
           <MovieCard 
             key={movie.id} 
             movie={movie}
@@ -68,6 +78,9 @@ const MovieListView = ({ searchQuery }) => {
             className="MovieListView-item" 
           />
         ))}
+      </div>
+      <div className="MovieListView-pagination-container">
+        <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} searchQuery={searchQuery} />
       </div>
     </div>
   )
