@@ -14,8 +14,8 @@ const TrailerModal = ({ show, onHide, youtubeId }) => {
       <Modal.Body className="TrailerModal-body">
         <iframe 
           title={youtubeId} 
-          width="560" 
-          height="315" 
+          width="720" 
+          height="405" 
           src={`https://www.youtube.com/embed/${youtubeId}`} 
           frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

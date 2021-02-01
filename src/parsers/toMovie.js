@@ -11,7 +11,7 @@ const toMovie = (object) => {
     image: object.poster_path ? `http://image.tmdb.org/t/p/w342/${object.poster_path}` : null,
     releaseYear: object.release_date.substring(0, 4),
     language: languageName.of(object.original_language) ?? 'Unknown',
-    youtubeUrl: object.videos.results.filter(r => r.type === 'Trailer' && r.site === 'YouTube')[0]?.key
+    youtubeId: object.videos.results.filter(r => r.type === 'Trailer' && r.site === 'YouTube')[0]?.key
   }
 }
 
