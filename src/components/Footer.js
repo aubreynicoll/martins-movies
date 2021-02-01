@@ -15,12 +15,14 @@ const Footer = () => {
             earum accusantium et fugit.
           </p>
         </div>
+
         <div className="Footer-flex-item">
           <h3>Twitter Feed</h3>
           <p>
             Check us out at <a href="#">@your-twitter-here</a>!
           </p>
         </div>
+
         <div className="Footer-flex-item">
           <h3>Useful Links</h3>
           <p>
@@ -35,8 +37,8 @@ const Footer = () => {
           <p>
             <a href="#">Testimonials</a>
           </p>
-
         </div>
+
         <div className="Footer-flex-item">
           <h3>Instagram</h3>
           <p>
@@ -44,7 +46,9 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
       <hr />
+
       <div className="Footer-links-container">
         <span className="Footer-links-item">
           <a href="#">Privacy &amp; Cookies</a>
@@ -55,6 +59,7 @@ const Footer = () => {
           {' '}
           <a href="#">Community</a>
         </span>
+        
         <span className="Footer-links-item">
           &copy; Martin's Movies 2021. All Rights Reserved.
         </span>

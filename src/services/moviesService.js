@@ -24,11 +24,11 @@ const getAll = async () => {
   ))
 
   // use movie ids to get detailed data...
-  promisesArray = idArray.map(id => axios.get(`${baseUrl}/${id}`, { params: { api_key } }))
+  promisesArray = idArray.map(id => axios.get(`${baseUrl}/${id}`, { params: { api_key, append_to_response: 'videos' } }))
   responsesArray = await axios.all(promisesArray)
 
   const movieObjArray = responsesArray.map(response => response.data).flat()
-  return movieObjArray.map(movieObj => toMovie(movieObj))
+  return movieObjArray.map(movieObj => toMovie(movieObj)) // return formatted data
 }
 
 const moviesService = {

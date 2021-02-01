@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import checkIcon from '../assets/icons/check.svg'
 import starIcon from '../assets/icons/star.png'
+import playIcon from '../assets/icons/play.png'
+import { TrailerModal } from '.'
 
 const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
-  const imdbLink = movie.imdbId ? `https://www.imdb.com/title/${movie.imdbId}/` : null
-  const imgSrc = `http://image.tmdb.org/t/p/w342/${movie.image}`
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div className="MovieCard-root">
       <div className="MovieCard-img-container">
-        <img className="MovieCard-img" src={imgSrc} alt="" />
+        <img className="MovieCard-img" src={movie.image} alt="" />
       </div>
+
+      {movie.youtubeId &&
+      <div>
+        <div onClick={() => setShowModal(true)} className="MovieCard-play-button">
+          <img src={playIcon} alt="" />
+        </div>
+        <TrailerModal show={showModal} onHide={() => setShowModal(false)} youtubeId={movie.youtubeId} />
+      </div>
+      }
 
       <div className="MovieCard-details-container">
         <h3>{movie.title}</h3>
@@ -29,7 +39,9 @@ const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
             {movie.voteAverage}/10
           </span>
           {' '}
-          <span>{movie.genres.slice(0,3).join(', ')}</span>
+          <span>
+            {movie.genres.slice(0,3).join(', ')}
+          </span>
         </div>
 
         <p className="MovieCard-overview">
@@ -38,8 +50,8 @@ const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
 
         <div className="MovieCard-flex-row">
           <span>
-            {imdbLink 
-              && <Button href={imdbLink} target="_blank">Read More</Button>
+            {movie.imdbLink 
+              && <Button href={movie.imdbLink} target="_blank" rel="noopener noreferrer">Read More</Button>
             }
           </span>
           <span>
@@ -47,7 +59,10 @@ const MovieCard = ({ movie, isWatched, handleWatchedButtonClick }) => {
               variant={isWatched ? 'success' : 'secondary'}
               onClick={handleWatchedButtonClick}
             >
-              {isWatched ? <><img src={checkIcon} alt="" width="18" /> Watched</> : 'Watched'}
+              {isWatched 
+                ? <><img src={checkIcon} alt="" width="18" /> Watched</> 
+                : 'Watched'
+              }
             </Button>
           </span>
         </div>
