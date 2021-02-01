@@ -80,7 +80,7 @@ const MovieListView = ({ searchQuery }) => {
         ))}
       </div>
       <div className="MovieListView-pagination-container">
-        <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} />
+        <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} searchQuery={searchQuery} />
       </div>
     </div>
   )

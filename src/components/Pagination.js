@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Pagination from 'react-bootstrap/Pagination'
 
-const MyPagination = ({ items, onChangePage, pageSize = 6}) => {
-  const MIN_PAGE = 1
-  const MAX_PAGE = Math.ceil(items.length / pageSize)
+const MyPagination = ({ items, onChangePage, searchQuery, pageSize = 6}) => {
+  const minPage = 1
+  const maxPage = Math.ceil(items.length / pageSize)
 
   const [active, setActive] = useState()
-  console.log(MAX_PAGE)
-
+  
   useEffect(() => {
     setActive(1)
   }, [])
@@ -19,10 +18,10 @@ const MyPagination = ({ items, onChangePage, pageSize = 6}) => {
     onChangePage(
       items.slice(pageStartElement, pageEndElement)
     )
-  }, [active])
+  }, [active, searchQuery])
 
   let pages = []
-  for (let i = Math.max(active - 3, MIN_PAGE); i <= Math.min(active + 4, MAX_PAGE); i++) {
+  for (let i = Math.max(active - 3, minPage); i <= Math.min(active + 4, maxPage); i++) {
     pages.push(
       <Pagination.Item key={i} active={i === active} onClick={() => setActive(i)}>
         {i}
@@ -31,9 +30,9 @@ const MyPagination = ({ items, onChangePage, pageSize = 6}) => {
   }
   return (
     <Pagination>
-      <Pagination.First onClick={() => setActive(MIN_PAGE)} />
+      <Pagination.First onClick={() => setActive(minPage)} />
       {pages}
-      <Pagination.Last onClick={() => setActive(MAX_PAGE)} />
+      <Pagination.Last onClick={() => setActive(maxPage)} />
     </Pagination>
   )
 }
