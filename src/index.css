@@ -133,6 +133,12 @@ hr {
   background-color: --violet;
 }
 
+.TrailerModal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Footer-root {
   color: white;
   background-color: var(--blue-gray);
