@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { MovieCard } from '.'
 import { moviesService } from '../services'
 import { localStorageWithTTL } from '../utils'
+import Pagination from 'jw-react-pagination'
 
 const MovieListView = ({ searchQuery }) => {
   const [moviesList, setMoviesList] = useState([])
+  const [pageOfMovies, setPageOfMovies] = useState([])
   const [watchedMoviesList, setWatchedMoviesList] = useState([])
 
   // initialize state...
@@ -56,10 +58,14 @@ const MovieListView = ({ searchQuery }) => {
       ))
     : moviesList
 
+  const onChangePage = (pageOfMovies) => {
+    setPageOfMovies(pageOfMovies)
+  }
+
   return (
     <div className="MovieListView-root">
       <div className="MovieListView-container">
-        {moviesBySearch.map(movie => (          
+        {pageOfMovies.map(movie => (          
           <MovieCard 
             key={movie.id} 
             movie={movie}
@@ -69,6 +75,7 @@ const MovieListView = ({ searchQuery }) => {
           />
         ))}
       </div>
+      <Pagination items={moviesBySearch} onChangePage={onChangePage} pageSize={6} />
     </div>
   )
 }
