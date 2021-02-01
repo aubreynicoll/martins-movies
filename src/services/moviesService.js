@@ -1,4 +1,5 @@
 import axios from 'axios'
+import rateLimit from 'axios-rate-limit'
 import { toMovie } from '../parsers'
 
 const baseUrl = 'https://api.themoviedb.org/3/movie'
@@ -21,10 +22,13 @@ const getAll = async () => {
     response.data.results.map(result => (
       result.id
     ))
-  ))
+  )).flat()
+
+  const axiosRateLimit = rateLimit(axios.create(), { maxRequests: 500, perMilliseconds: 1 })
+  axiosRateLimit.getMaxRPS()
 
   // use movie ids to get detailed data...
-  promisesArray = idArray.map(id => axios.get(`${baseUrl}/${id}`, { params: { api_key, append_to_response: 'videos' } }))
+  promisesArray = idArray.map(id => axiosRateLimit.get(`${baseUrl}/${id}`, { params: { api_key, append_to_response: 'videos' } }))
   responsesArray = await axios.all(promisesArray)
 
   const movieObjArray = responsesArray.map(response => response.data).flat()

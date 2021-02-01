@@ -14,7 +14,7 @@ const MovieListView = ({ searchQuery }) => {
       const movieData = await moviesService.getAll()
       setMoviesList(movieData)
 
-      const HoursToLive = 1
+      const HoursToLive = 0
       localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
     }
 
