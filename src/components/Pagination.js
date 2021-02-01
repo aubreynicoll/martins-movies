@@ -21,7 +21,7 @@ const MyPagination = ({ items, onChangePage, searchQuery, moviesList, pageSize =
   }, [active, searchQuery, moviesList])
 
   let pages = []
-  for (let i = Math.max(active - 3, minPage); i <= Math.min(active + 4, maxPage); i++) {
+  for (let i = Math.max(active - 3, minPage); i <= Math.min(active + 3, maxPage); i++) {
     pages.push(
       <Pagination.Item key={i} active={i === active} onClick={() => setActive(i)}>
         {i}
