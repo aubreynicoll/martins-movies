@@ -32,6 +32,15 @@ hr {
   width: 100%;
 }
 
+.SplashScreen-root {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .MovieListView-root {
   background-color: var(--bg-gray);
   padding: 100px 0;
