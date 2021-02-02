@@ -24,7 +24,7 @@ const getAll = async () => {
     ))
   )).flat()
 
-  const axiosRateLimit = rateLimit(axios.create(), { maxRequests: 500, perMilliseconds: 1 })
+  const axiosRateLimit = rateLimit(axios.create(), { maxRequests: 200, perMilliseconds: 1 })
   axiosRateLimit.getMaxRPS()
 
   // use movie ids to get detailed data...
