@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { MovieCard, Pagination } from '.'
+import { MovieCard, Pagination, SplashScreen } from '.'
 import { moviesService } from '../services'
 import { localStorageWithTTL } from '../utils'
 
@@ -7,12 +7,14 @@ const MovieListView = ({ searchQuery }) => {
   const [moviesList, setMoviesList] = useState([])
   const [pageOfMovies, setPageOfMovies] = useState([])
   const [watchedMoviesList, setWatchedMoviesList] = useState([])
+  const [showSplash, setShowSplash] = useState(true)
 
   // initialize state...
   useEffect(() => {
     const awaitMovieData = async () => {
       const movieData = await moviesService.getAll()
       setMoviesList(movieData)
+      setShowSplash(false)
 
       const HoursToLive = 1
       localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
@@ -22,6 +24,7 @@ const MovieListView = ({ searchQuery }) => {
     const cachedMovieData = localStorageWithTTL.getItem('moviesList')
     if (cachedMovieData) {
       setMoviesList(cachedMovieData)
+      setShowSplash(false)
     } else {
       awaitMovieData()
     }
@@ -65,6 +68,8 @@ const MovieListView = ({ searchQuery }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pageOfMovies])
+
+  if (showSplash) return <SplashScreen />
 
   return (
     <div className="MovieListView-root">
