@@ -3,6 +3,7 @@ const toMovie = (object, genreMap) => {
   
   return {
     id: object.id,
+    hasDetails: false,
     title: object.title,
     genres: object.genre_ids.map(id => genreMap.find(genre => id === genre.id).name),
     overview: object.overview,
