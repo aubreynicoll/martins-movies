@@ -31,7 +31,9 @@ const MyPagination = ({ items, onChangePage, searchQuery, moviesList, pageSize =
   return (
     <Pagination>
       <Pagination.First onClick={() => setActive(minPage)} />
+      <Pagination.Prev onClick={() => setActive(Math.max(active - 1, minPage))}/>
       {pages}
+      <Pagination.Next onClick={() => setActive(Math.min(active + 1, maxPage))} />
       <Pagination.Last onClick={() => setActive(maxPage)} />
     </Pagination>
   )
