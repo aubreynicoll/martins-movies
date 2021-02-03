@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { toMovie } from '../parsers'
+import { toMovie, toMovieDetails } from '../parsers'
 
 const baseUrl = 'https://api.themoviedb.org/3'
 const api_key = process.env.REACT_APP_API_KEY
@@ -29,10 +29,29 @@ const getAll = async () => {
   }
 }
 
+const getDetailsByIds = async (ids) => {
+  try {
+    const promisesArray = ids.map(id => getDetailsById(id))
+    const movieDetailsArray = Promise.all(promisesArray)
+    return movieDetailsArray
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const getDetailsById = async (id) => {
+  try {
+    const { data: movieDetailsObj } = await axios.get(`${baseUrl}/movie/${id}`, { params: { api_key, append_to_response: 'videos' } })
+    return toMovieDetails(movieDetailsObj) // return formatted data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 const getGenreMap = async () => {
   try {
-    const { data } = await axios.get(`${baseUrl}/genre/movie/list`, { params: { api_key } })
-    return data
+    const { data: { genres: genreMap } } = await axios.get(`${baseUrl}/genre/movie/list`, { params: { api_key } })
+    return genreMap
   } catch (error) {
     console.error(error)
   }
@@ -40,6 +59,9 @@ const getGenreMap = async () => {
 
 const moviesService = {
   getAll,
+  getDetailsByIds,
+  getDetailsById,
+  getGenreMap
 }
 
 export default moviesService
