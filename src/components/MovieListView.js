@@ -12,12 +12,16 @@ const MovieListView = ({ searchQuery }) => {
   // initialize state...
   useEffect(() => {
     const awaitMovieData = async () => {
-      const movieData = await moviesService.getAll()
-      setMoviesList(movieData)
-      setShowSplash(false)
+      try {
+        const movieData = await moviesService.getAll()
+        setMoviesList(movieData)
+        setShowSplash(false)
 
-      const HoursToLive = 1
-      localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
+        const HoursToLive = 1
+        localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
+      } catch (error) {
+        console.error(error)
+      }      
     }
 
     // initialize moviesList from localStorage, else from server...
