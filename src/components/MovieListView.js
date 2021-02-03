@@ -17,7 +17,7 @@ const MovieListView = ({ searchQuery }) => {
         setMoviesList(movieData)
         setShowSplash(false)
 
-        const HoursToLive = 1
+        const HoursToLive = 0
         localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
       } catch (error) {
         console.error(error)
