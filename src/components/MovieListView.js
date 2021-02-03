@@ -9,6 +9,8 @@ const MovieListView = ({ searchQuery }) => {
   const [watchedMoviesList, setWatchedMoviesList] = useState([])
   const [showSplash, setShowSplash] = useState(true)
 
+  const hoursToLive = 1
+
   // initialize state...
   useEffect(() => {
     const awaitMovieData = async () => {
@@ -17,8 +19,7 @@ const MovieListView = ({ searchQuery }) => {
         setMoviesList(movieData)
         setShowSplash(false)
 
-        const HoursToLive = 0
-        localStorageWithTTL.setItem('moviesList', movieData, HoursToLive)
+        localStorageWithTTL.setItem('moviesList', movieData, hoursToLive)
       } catch (error) {
         console.error(error)
       }      
@@ -65,9 +66,35 @@ const MovieListView = ({ searchQuery }) => {
     : moviesList
 
   // update pageOfMovies when page is changed
-  const onChangePage = (pageOfItems) => {
-    setPageOfMovies(pageOfItems)
+  const onChangePage = (pageOfMovies) => {
+    setPageOfMovies(pageOfMovies)
   }
+
+  // load movie details if not in cache...
+  useEffect(() => {
+    const awaitMovieDetails = async () => {
+      try {
+        const idsArray = pageOfMovies.map(movie => movie.id)
+        const movieDetailsArray = await moviesService.getDetailsByIds(idsArray)
+        const updatedMovieList = moviesList.map(movie => {
+          const match = movieDetailsArray.find(({ id }) => id === movie.id)
+          if (match) {
+            return { ...movie, ...match }
+          } else {
+            return movie
+          }
+        })
+        setMoviesList(updatedMovieList)
+        localStorageWithTTL.setItem('moviesList', updatedMovieList, hoursToLive)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    if (pageOfMovies.some(movie => !movie.hasDetails)) {
+      awaitMovieDetails()
+    }
+  }, [pageOfMovies])
 
   useEffect(() => {
     window.scrollTo(0, 0)
