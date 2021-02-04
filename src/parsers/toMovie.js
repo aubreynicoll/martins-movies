@@ -1,5 +1,6 @@
+import ISO6391 from 'iso-639-1'
+
 const toMovie = (object, genreMap) => {
-  const languageName = new Intl.DisplayNames(['en'], { type: 'language', fallback: 'none' })
   
   return {
     id: object.id,
@@ -10,7 +11,7 @@ const toMovie = (object, genreMap) => {
     voteAverage: object.vote_average,
     image: object.backdrop_path ? `http://image.tmdb.org/t/p/w300/${object.backdrop_path}` : null,
     releaseYear: object.release_date.substring(0, 4),
-    language: languageName.of(object.original_language) ?? 'Unknown'
+    language: ISO6391.getName(object.original_language) ?? 'Unknown'
   }
 }
 
