@@ -6,8 +6,10 @@ Deployed to https://gentle-reaches-49866.herokuapp.com/
 
 ## Motivation
 
-Martin's Movies is a non-commercial project for use in my personal portfolio.\
-The project's primary function is to showcase my proficiency with the technologies used within.
+Martin's Movies is a coding challenge I did. \
+Given a spec sheet, an API, and a similar website's theme, I was tasked with creating a comparable product. \
+If you are a recruiter, please note that the dead links in the header and footer were part of the spec. \
+The project's primary function is to showcase my proficiency with the technologies used within and doesn't represent an actual website.
 
 ## Technologies Utilized
 
